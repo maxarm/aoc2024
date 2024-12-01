@@ -3,7 +3,7 @@ import os
 
 print(os.getcwd())
 
-with open("aoc2024/2023day1/inb.txt", "r") as f:
+with open("2023day1/inb.txt", "r") as f:
     lines = f.readlines()
 
 pattern = r"(one|two|three|four|five|six|seven|eight|nine|1|2|3|4|5|6|7|8|9)"
