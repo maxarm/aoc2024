@@ -10,4 +10,4 @@ def test_d02b_testdata():
     assert d02.get_number_of_safe_reports(True, True) == 5
 
 def test_d02b_data():
-    assert d02.get_number_of_safe_reports(True, False) == 4
+    assert d02.get_number_of_safe_reports(True, False) == 439
