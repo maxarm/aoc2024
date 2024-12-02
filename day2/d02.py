@@ -1,5 +1,5 @@
-import utils
 from typing import List
+import utils
 
 
 def get_number_of_safe_reports(tolerant: bool, read_test_data: bool) -> int:
@@ -41,35 +41,33 @@ def remove_element(nums: List[int], index: int) -> List[int]:
     return nums[:index] + nums[index+1:]
 
 
+def get_shortened_list(nums):
+    return [remove_element(nums, i) for i in range(0, len(nums))]
+
+
 def is_increasing_safely_tolerantly(nums: List[int]) -> bool:
-    for i in range(0, len(nums)):
-        new_list = remove_element(nums, i)
-        if is_increasing_safely_strict(new_list):
-            return True
-    return False
+    shortened_lists = get_shortened_list(nums)
+    return any(is_increasing_safely_strict(x) for x in shortened_lists)
 
 
 def is_decreasing_safely_tolerantly(nums: List[int]) -> bool:
-    for i in range(0, len(nums)):
-        new_list = remove_element(nums, i)
-        if is_decreasing_safely_strict(new_list):
-            return True
-    return False
+    shortened_lists = get_shortened_list(nums)
+    return any(is_decreasing_safely_strict(x) for x in shortened_lists)
 
 
 def is_increasing_safely_strict(nums: List[int]) -> bool:
-    return all([
+    return all(
         x < y and
         abs(x-y) > 0 and
         abs(x-y) < 4
         for x, y in zip(nums, nums[1:])
-    ])
+    )
 
 
 def is_decreasing_safely_strict(nums: List[int]) -> bool:
-    return all([
+    return all(
         x > y and
         abs(x-y) > 0 and
         abs(x-y) < 4
         for x, y in zip(nums, nums[1:])
-    ])
+    )
