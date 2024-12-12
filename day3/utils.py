@@ -13,5 +13,8 @@ def read_input(day: int) -> str:
 def read_lines(day: int, read_test_data: bool=False) -> str:
     return read_test_input(day) if read_test_data else read_input(day)
 
+def read_lines_of_b(day: int, read_test_data: bool=False) -> str:
+    return read_file(day, "testinb.txt") if read_test_data else read_file(day, "inb.txt")
+
 def read_data(day: int, read_test_data: bool=False) -> str:
     return read_lines(day, read_test_data)[0]
