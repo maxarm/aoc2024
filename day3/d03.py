@@ -28,7 +28,7 @@ def get_mul_sum_without_donts(read_test_data: bool) -> int:
     return result
 
 
-def remove_next_dont_block(data: str):
+def remove_next_dont_block(data: str) -> tuple[bool, str|None]:
     dont_idx = data.find("don't()")
     if dont_idx == -1:
         return False, data
